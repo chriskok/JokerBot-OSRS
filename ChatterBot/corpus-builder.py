@@ -15,17 +15,17 @@ with open('stupidstuff.json', encoding="utf-8") as json_file:
         
         count+=1
 
-with open('wocka.json', encoding="utf-8") as json_file:
-    data = json.load(json_file)
-    for joke in data:
-        current_joke = re.sub(r'[^\x00-\x7F]+',' ', joke['body'].replace('\r', "").replace('\n', " "))
-        if (len(current_joke) > 0 and len(current_joke) < 70 and not ('Blond' in joke['category']) ):
-            temp_arr = []
-            temp_arr.append("Tell me a joke")
-            temp_arr.append(current_joke)
-            chosenJokes.append(temp_arr)
+# with open('wocka.json', encoding="utf-8") as json_file:
+#     data = json.load(json_file)
+#     for joke in data:
+#         current_joke = re.sub(r'[^\x00-\x7F]+',' ', joke['body'].replace('\r', "").replace('\n', " "))
+#         if (len(current_joke) > 0 and len(current_joke) < 70 and not ('Blond' in joke['category']) ):
+#             temp_arr = []
+#             temp_arr.append("Tell me a joke")
+#             temp_arr.append(current_joke)
+#             chosenJokes.append(temp_arr)
         
-        count+=1
+#         count+=1
 
 # Python
 dict_file = {'categories': ['test-jokes'],
