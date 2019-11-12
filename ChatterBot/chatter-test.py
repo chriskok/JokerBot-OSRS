@@ -19,7 +19,7 @@ chatbot = ChatBot('Ron Obvious')
 trainer = ChatterBotCorpusTrainer(chatbot)
 
 # Train the chatbot based on the english corpus
-trainer.train('chatterbot.corpus.english', "./data/test.yaml")
+trainer.train('chatterbot.corpus.english.greetings', "./data/test.yaml")
 
 # The following loop will execute each time the user enters input
 while True:
