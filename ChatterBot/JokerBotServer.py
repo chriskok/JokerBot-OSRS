@@ -18,20 +18,17 @@ chatbot = ChatBot('Ron Obvious',
 trainer = ChatterBotCorpusTrainer(chatbot)
 
 # Train the chatbot based on the english corpus
-trainer.train('chatterbot.corpus.english.greetings', 'chatterbot.corpus.english.emotion',
-                'chatterbot.corpus.english.botprofile','chatterbot.corpus.english.conversations',
-                "./data/test.yaml")
-
-def changeString(myString):
-    newString = myString + " - CHANGED\r\n"
-
-    return newString
+trainer.train('chatterbot.corpus.english.greetings')
+# trainer.train('chatterbot.corpus.english.greetings', 'chatterbot.corpus.english.emotion',
+#                 'chatterbot.corpus.english.botprofile','chatterbot.corpus.english.conversations',
+#                 "./data/test.yaml")
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 9876              # Arbitrary non-privileged port
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
-s.listen(5)
+print('Server Ready')
+s.listen(1)
 conn, addr = s.accept()
 print ('Connected by', addr)
 
@@ -44,13 +41,13 @@ while 1:
         if not data: break
         print( "request: {}".format(decodedRequest) )
 
-        bot_response = chatbot.get_response(decodedRequest)
+        bot_response = str(chatbot.get_response(decodedRequest))
         print("response: {}".format(bot_response) )
 
-        conn.sendall(str.encode(bot_response)) # turn it back into bytes 
+        conn.sendall(str.encode(bot_response + " \r\n")) # turn it back into bytes 
 
     # Press ctrl-c or ctrl-d on the keyboard to exit
     except (KeyboardInterrupt, EOFError, SystemExit):
         break
-    
+
 conn.close()

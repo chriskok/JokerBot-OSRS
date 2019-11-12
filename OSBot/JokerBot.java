@@ -89,8 +89,7 @@ public class JokerBot extends Script {
                 Player currentClosestPlayer = getClosestPlayer();
                 log("Following player: " + currentClosestPlayer.getName());
                 currentClosestPlayer.interact("Follow");
-                keyboard.typeString("Hello, " + currentClosestPlayer.getName() + "! I am a friendly chat bot.");
-                keyboard.typeString("How are you doing? (say go away to end this chat)");
+                keyboard.typeString("Hello, " + currentClosestPlayer.getName() + "! I am a friendly chat bot. How are you?");
             }
             catch(Exception e) {
                 closestPlayerExists = false;
