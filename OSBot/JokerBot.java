@@ -18,9 +18,9 @@ import java.util.Scanner;
 public class JokerBot extends Script {
 
     Player currentTarget;
-    int targetResponse = 60;
-    int responseWaitTime = 60;
-    boolean DEBUG = true;
+    int targetResponse = 120;
+    int responseWaitTime = 120;
+    boolean DEBUG = false;
 
     //get the localhost IP address, if server is running on some other IP, you need to use that
     InetAddress host;
@@ -144,17 +144,18 @@ public class JokerBot extends Script {
         if (m.getType() == Message.MessageType.PLAYER){
             if(m.getUsername().equals(currentTarget.getName())){
                 targetResponse = 0;
-                log("TARGET SAID: " + m.getMessage());
+                log(m.getUsername() + " said: " + m.getMessage());
 
                 if(m.getMessage().toLowerCase().contains("go away")){
                     targetResponse = responseWaitTime + 1;
                     keyboard.typeString("Goodbye, " + currentTarget.getName() + "!");
                 } else {
                     String response = sendMessage(m.getMessage());
+
                     keyboard.typeString(response);
                 }
             } else {
-                log(m.getUsername() + " said: " + m.getMessage());
+                if (DEBUG) {log(m.getUsername() + " said: " + m.getMessage());}
             }
         }
     }
