@@ -18,10 +18,10 @@ chatbot = ChatBot('Ron Obvious',
 trainer = ChatterBotCorpusTrainer(chatbot)
 
 # Train the chatbot based on the english corpus
-trainer.train('chatterbot.corpus.english.greetings')
-# trainer.train('chatterbot.corpus.english.greetings', 'chatterbot.corpus.english.emotion',
-#                 'chatterbot.corpus.english.botprofile','chatterbot.corpus.english.conversations',
-#                 "./data/test.yaml")
+# trainer.train('chatterbot.corpus.english.greetings')
+trainer.train('chatterbot.corpus.english.greetings', 'chatterbot.corpus.english.emotion',
+                'chatterbot.corpus.english.botprofile','chatterbot.corpus.english.conversations',
+                "./data/test.yaml")
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 9876              # Arbitrary non-privileged port
